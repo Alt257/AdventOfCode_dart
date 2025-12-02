@@ -22,7 +22,6 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   String solve(String input) {
-    return '';  // TDD: Red
     return '3'; // TDD: minimal Green
   }
 
