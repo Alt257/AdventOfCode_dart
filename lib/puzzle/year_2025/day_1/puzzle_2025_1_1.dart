@@ -29,26 +29,28 @@ final class Puzzle_2025_1_1 extends Puzzle {
     
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
-    var passedBy0Counter = 0;
+    var pointAt0Counter = 0;
 
     for (final move in allMoves) {
       if (move.direction == Direction.left) {
         position -= move.distance;
         if (position < min) {
           position += range;
-          passedBy0Counter++;
         }
 
       } else { // move.direction == Direction.right
         position += move.distance;
         if (position > max) {
           position -= range;
-          passedBy0Counter++;
         }
+      }
+
+      if (position == 0) {
+        pointAt0Counter++;
       }
     }
 
-    return '$passedBy0Counter';
+    return '$pointAt0Counter';
   }
 
 }
