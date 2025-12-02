@@ -49,7 +49,7 @@ Future<void> main() async {
 
     group('Wrong answers', () {
       test('290 is too low', () {
-        expect(puzzle.answer > 290, isTrue);
+        expect(puzzle.answer, greaterThan(290));
       });
     });
 

@@ -4,7 +4,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
 
   @override
-  String get exampleAnswer => '3';
+  dynamic get exampleAnswer => 3;
 
   @override
   String get exampleInput =>
@@ -21,7 +21,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
   ;
 
   @override
-  String solve(String input) {
+  dynamic solve(String input) {
     const startingPosition = 50;
     const min = 0;
     const max = 99;
@@ -50,7 +50,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
       }
     }
 
-    return '$pointAt0Counter';
+    return pointAt0Counter;
   }
 
 }
