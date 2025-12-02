@@ -21,4 +21,5 @@ void testExample(Puzzle puzzle) =>
     test('Example input, answer must be ${puzzle.exampleAnswer}', () {
       final answer = puzzle.solve(puzzle.exampleInput);
       expect(answer, puzzle.exampleAnswer);
+      print('Real input answer should be ${puzzle.answer}');
     });
