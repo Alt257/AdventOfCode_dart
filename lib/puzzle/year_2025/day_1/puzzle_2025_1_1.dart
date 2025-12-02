@@ -8,16 +8,16 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   String get exampleInput =>
-      'L68'
-      'L30'
-      'R48'
-      'L5'
-      'R60'
-      'L55'
-      'L1'
-      'L99'
-      'R14'
-      'L82'
+      'L68\n'
+      'L30\n'
+      'R48\n'
+      'L5\n'
+      'R60\n'
+      'L55\n'
+      'L1\n'
+      'L99\n'
+      'R14\n'
+      'L82\n'
   ;
 
   @override
