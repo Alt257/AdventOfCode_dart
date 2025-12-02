@@ -25,8 +25,30 @@ final class Puzzle_2025_1_1 extends Puzzle {
     const startingPosition = 50;
     const min = 0;
     const max = 99;
+    const range = max - min + 1;
+    
+    final allMoves = toListOfDialMove(input);
+    var position = startingPosition;
+    var passedBy0Counter = 0;
 
-    return '3';
+    for (final move in allMoves) {
+      if (move.direction == Direction.left) {
+        position -= move.distance;
+        if (position < min) {
+          position += range;
+          passedBy0Counter++;
+        }
+
+      } else { // move.direction == Direction.right
+        position += move.distance;
+        if (position > max) {
+          position -= range;
+          passedBy0Counter++;
+        }
+      }
+    }
+
+    return '$passedBy0Counter';
   }
 
 }
@@ -36,10 +58,24 @@ enum Direction { left, right }
 final class DialMove {
   DialMove(this.direction, this.distance);
   factory DialMove.fromString(String input) => DialMove(
-      input.startsWith('L') ? Direction.left : Direction.right,
-      int.parse(input.substring(1)),
+    parseDirection(input),
+    parseDistance(input),
   );
 
   final Direction direction;
   final int distance;
 }
+
+
+List<DialMove> toListOfDialMove(String input) => input
+    .split('\n')
+    .where((line) => line.isNotEmpty)
+    .map((line) =>
+    DialMove.fromString(line)
+).toList();
+
+Direction parseDirection(String input) =>
+    input.startsWith('L') ? Direction.left : Direction.right;
+
+int parseDistance(String input) =>
+    int.parse(input.substring(1));
