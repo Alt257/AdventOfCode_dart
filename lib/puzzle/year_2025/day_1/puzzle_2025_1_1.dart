@@ -22,9 +22,13 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   String solve(String input) {
-    return '3'; // TDD: minimal Green
+    const startingPosition = 50;
+    const min = 0;
+    const max = 99;
+
+    return '3';
   }
 
 }
 
-void main() {}
+enum Direction { left, right }
