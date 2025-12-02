@@ -32,3 +32,14 @@ final class Puzzle_2025_1_1 extends Puzzle {
 }
 
 enum Direction { left, right }
+
+final class DialMove {
+  DialMove(this.direction, this.distance);
+  factory DialMove.fromString(String input) => DialMove(
+      input.startsWith('L') ? Direction.left : Direction.right,
+      int.parse(input.substring(1)),
+  );
+
+  final Direction direction;
+  final int distance;
+}
