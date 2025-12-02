@@ -4,7 +4,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
 
   @override
-  String get exampleAnswer => '3';
+  dynamic get exampleAnswer => 3;
 
   @override
   String get exampleInput =>
@@ -21,9 +21,9 @@ final class Puzzle_2025_1_1 extends Puzzle {
   ;
 
   @override
-  String solve(String input) {
-    return '';  // TDD: Red
-    return '3'; // TDD: minimal Green
+  dynamic solve(String input) {
+    return 0;  // TDD: Red
+    return 3; // TDD: minimal Green
   }
 
 }

@@ -27,9 +27,9 @@ abstract class Puzzle {
   }
 
   String get exampleInput;
-  String get exampleAnswer;
-  String get answer => solve(input);
+  dynamic get exampleAnswer;
+  dynamic get answer => solve(input);
 
-  String solve(String input);
+  dynamic solve(String input);
 
 }
