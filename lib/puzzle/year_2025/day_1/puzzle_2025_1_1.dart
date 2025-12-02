@@ -22,28 +22,13 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   dynamic solve(String input) {
-    const startingPosition = 50;
-    const min = 0;
-    const max = 99;
-    const range = max - min + 1;
     
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
     var pointAt0Counter = 0;
 
     for (final move in allMoves) {
-      if (move.direction == Direction.left) {
-        position -= move.distance;
-        if (position < min) {
-          position += range;
-        }
-
-      } else { // move.direction == Direction.right
-        position += move.distance;
-        if (position > max) {
-          position -= range;
-        }
-      }
+      position = makeMove(position, move);
 
       if (position == 0) {
         pointAt0Counter++;
@@ -56,6 +41,10 @@ final class Puzzle_2025_1_1 extends Puzzle {
 }
 
 enum Direction { left, right }
+const startingPosition = 50;
+const min = 0;
+const max = 99;
+const range = max - min + 1;
 
 final class DialMove {
   DialMove(this.direction, this.distance);
@@ -81,3 +70,20 @@ Direction parseDirection(String input) =>
 
 int parseDistance(String input) =>
     int.parse(input.substring(1));
+
+int makeMove(int position, DialMove move) {
+  if (move.direction == Direction.left) {
+    position -= move.distance;
+    while (position < min) {
+      position += range;
+    }
+
+  } else { // move.direction == Direction.right
+    position += move.distance;
+    while (position > max) {
+      position -= range;
+    }
+  }
+
+  return position;
+}

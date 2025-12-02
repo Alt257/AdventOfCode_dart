@@ -47,6 +47,14 @@ Future<void> main() async {
       expect(list.length, 10);
     });
 
+    group('makeMove_test()', () {
+      test('makeMove_0_L1_test', () {
+        final position = makeMove(0, DialMove(Direction.left, 1));
+        expect(position, 99);
+      });
+    });
+
+    ///////////////////////////////////////////
     group('Wrong answers', () {
       test('290 is too low', () {
         expect(puzzle.answer, greaterThan(290));
