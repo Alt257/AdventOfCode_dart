@@ -47,5 +47,11 @@ Future<void> main() async {
       expect(list.length, 10);
     });
 
+    group('Wrong answers', () {
+      test('290 is too low', () {
+        expect(puzzle.answer > 290, isTrue);
+      });
+    });
+
   });
 }
