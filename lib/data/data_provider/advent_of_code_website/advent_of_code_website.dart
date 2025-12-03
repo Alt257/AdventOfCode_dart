@@ -1,4 +1,5 @@
 import 'package:advent_of_code__dart/CORE/data/http_data_provider.dart';
+import 'package:dio/dio.dart' show LogInterceptor;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:html/parser.dart';
 
@@ -12,7 +13,7 @@ final class AdventOfCodeWebsiteDataProvider extends HttpDataProvider {
   AdventOfCodeWebsiteDataProvider(): super(
       url: 'https://adventofcode.com',
       globalInterceptors: [
-        // LogInterceptor(),
+        LogInterceptor(),
       ],
   );
 
