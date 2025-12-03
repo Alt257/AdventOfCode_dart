@@ -47,7 +47,7 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
       expect(answer, customAnswer);
     });
   } else {
-    test('Custom input expect NO answers', () {
+    test('/!\\ Custom input - NO VALUE EXPECTED /!\\', () {
       print('Custom input answer should be $answer');
     });
   }
