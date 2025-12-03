@@ -1,4 +1,4 @@
-import 'package:advent_of_code__dart/entity/puzzle.dart';
+import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 
 final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);

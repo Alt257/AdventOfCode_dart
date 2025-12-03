@@ -1,10 +1,8 @@
+import 'package:advent_of_code__dart/CORE/test/utils.dart';
 import 'package:advent_of_code__dart/puzzle/year_2025/day_1/puzzle_2025_1_2.dart';
-import 'package:test/test.dart';
-
-import '../../utils.dart';
 
 void main() {
-  runPuzzleTests(Puzzle_2025_1_2(), (puzzle) {
+  runPuzzleTests(Puzzle_2025_1_2(), runCustomTests: (puzzle) {
 
     group('known values', () {
 
