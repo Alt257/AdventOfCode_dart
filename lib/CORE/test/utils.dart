@@ -1,5 +1,5 @@
+import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
-import 'package:advent_of_code__dart/entity/puzzle.dart';
 import 'package:test/test.dart';
 
 export 'package:test/test.dart';

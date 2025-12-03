@@ -1,4 +1,4 @@
-import 'package:advent_of_code__dart/entity/puzzle.dart';
+import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 
 final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
@@ -22,8 +22,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   dynamic solve(String input) {
-
-    /// Example of logic to solve the puzzle
+    /// Implement your logic to solve the puzzle
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
     var pointAt0Counter = 0;

@@ -1,4 +1,4 @@
-import 'package:advent_of_code__dart/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
+import 'package:advent_of_code__dart/CORE/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
 
 abstract class Puzzle {
 
