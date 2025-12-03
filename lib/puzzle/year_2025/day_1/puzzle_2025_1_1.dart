@@ -22,7 +22,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
 
   @override
   dynamic solve(String input) {
-    
+
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
     var pointAt0Counter = 0;
