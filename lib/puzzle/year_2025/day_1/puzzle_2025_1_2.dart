@@ -24,9 +24,11 @@ final class Puzzle_2025_1_2 extends Puzzle {
 
   @override
   solve(String input) {
+    const verbose = true;
+
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
-    var pointAt0Counter = 0;
+    final counter = Counter();
 
     for (final move in allMoves) {
 
@@ -36,7 +38,11 @@ final class Puzzle_2025_1_2 extends Puzzle {
       final stopAtO = (position + signedDistance) % range == 0;
 
       if (stopAtO) {
-        pointAt0Counter++;
+        counter.increase('stop at 0');
+      }
+
+      if (counter.hasIncreased) {
+        position += signedDistance;
       }
 
       // position = makeMove(position, move);
@@ -44,19 +50,49 @@ final class Puzzle_2025_1_2 extends Puzzle {
         position -= move.distance;
         while (position < min) {
           position += range;
-          if(position != 0) pointAt0Counter++;
+          if(!stopAtO) {
+            counter.increase('move left');
+          }
         }
 
       } else { // move.direction == Direction.right
         position += move.distance;
         while (position > max) {
           position -= range;
-          if(position != 0) pointAt0Counter++;
+          if(!stopAtO) {
+            counter.increase('move right');
+          }
         }
       }
+
+      position += counter.value;
+      if (verbose)  print('$move, new position: $position${counter.hasIncreased ? ' counter increased: ${counter.total}(+${counter.value}) reasons: ${counter.reasons}' : ''}');
+      counter.reset();
     }
 
-    return pointAt0Counter;
+    return counter.total;
   }
   
+}
+
+
+final class Counter {
+  int _value = 0;
+  int _total = 0;
+  Map<String, int> reasons;
+  Counter(): reasons = {};
+
+  void increase(String reason) {
+    _value++;
+    _total++;
+    final i = reasons[reason];
+    if (i != null)   reasons[reason] = i + 1;
+    else             reasons[reason] = 1;
+  }
+  void reset() { _value = 0; reasons.clear(); }
+
+  int get value => _value;
+  int get total => _total;
+  bool get hasIncreased => _value > 0;
+  String get reasonsString => reasons.toString();
 }

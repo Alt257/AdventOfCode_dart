@@ -55,6 +55,8 @@ final class DialMove {
 
   final Direction direction;
   final int distance;
+  @override
+  toString() => '${direction == Direction.left ? 'L' : 'R'}$distance';
 }
 
 
