@@ -76,12 +76,12 @@ void testPreviousWrongAnswer(Puzzle puzzle, WrongAnswer wrongAnswer) {
   if (wrongAnswer.matcher != null) {
     test(wrongAnswer.toString(), () {
       final answer = puzzle.solve(puzzle.input);
-      expect(answer, wrongAnswer.matcher);
+      expect(answer, wrongAnswer.matcher!(wrongAnswer.value));
     });
   } else {
-    test('Answer must not be ${wrongAnswer.answer}', () {
+    test('Answer must not be ${wrongAnswer.value}', () {
       final answer = puzzle.solve(puzzle.input);
-      expect(answer, isNot(wrongAnswer.answer));
+      expect(answer, isNot(wrongAnswer.value));
     });
   }
 }

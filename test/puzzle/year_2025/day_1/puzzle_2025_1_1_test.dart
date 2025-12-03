@@ -73,8 +73,8 @@ Future<void> main() async {
       },
 
       wrongAnswers: [
-        WrongAnswer(answer: 290, queue: 'is too low', matcher: greaterThan(290)),
-        WrongAnswer(answer: 99999, queue: 'is too high', matcher: lessThan(99999)),
+        WrongAnswer(290, queue: 'is too low', matcher: greaterThan),
+        WrongAnswer(99999, queue: 'is too high', matcher: lessThan),
       ]
   );
 }

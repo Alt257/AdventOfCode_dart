@@ -1,12 +1,15 @@
 part of 'utils.dart';
 
 final class WrongAnswer {
-  WrongAnswer({required this.answer, required this.queue, this.matcher});
+  WrongAnswer(this.value, {
+    required this.queue,
+    this.matcher,
+  });
 
-  final dynamic answer;
+  final dynamic value;
   final String queue;
-  final Matcher? matcher;
+  final Matcher Function(Object)? matcher;
 
   @override
-  String toString() => '$answer $queue';
+  String toString() => '$value $queue';
 }
