@@ -6,7 +6,7 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers['Cookie'] = token;
+    options.headers['Cookie'] = 'session=$token';
     handler.next(options);
   }
 }
