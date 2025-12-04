@@ -66,7 +66,7 @@ final class Puzzle_2025_1_2 extends Puzzle {
       }
 
       position += counter.value;
-      if (verbose)  print('$move, new position: $position${counter.hasIncreased ? ' counter increased: ${counter.total}(+${counter.value}) reasons: ${counter.reasons}' : ''}');
+      if (verbose) print('$move, new position: $position${counter.hasIncreased ? ' counter increased: ${counter.total}(+${counter.value}) reasons: ${counter.reasons}' : ''}');
       counter.reset();
     }
 
