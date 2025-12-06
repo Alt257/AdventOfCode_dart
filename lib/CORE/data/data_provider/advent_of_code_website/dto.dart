@@ -6,11 +6,12 @@ sealed class AdventOfCodeWebsiteResponse with _$AdventOfCodeWebsiteResponse {
 
   const factory AdventOfCodeWebsiteResponse.getDescription({
     required String description,
-  }) = AdventOfCodeWebsite_GetDescriptionResponse;
-
+    required String exampleInput,
+    required String exampleAnswer,
+  }) = AdventOfCodeWebsite_GetDescription_Response;
 
   const factory AdventOfCodeWebsiteResponse.getInput({
     required String input,
-  }) = AdventOfCodeWebsite_GetInputResponse;
+  }) = AdventOfCodeWebsite_GetInput_Response;
 
 }

@@ -55,11 +55,11 @@ extension AdventOfCodeWebsiteResponsePatterns on AdventOfCodeWebsiteResponse {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AdventOfCodeWebsite_GetDescriptionResponse value)?  getDescription,TResult Function( AdventOfCodeWebsite_GetInputResponse value)?  getInput,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( AdventOfCodeWebsite_GetDescription_Response value)?  getDescription,TResult Function( AdventOfCodeWebsite_GetInput_Response value)?  getInput,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse() when getDescription != null:
-return getDescription(_that);case AdventOfCodeWebsite_GetInputResponse() when getInput != null:
+case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
+return getDescription(_that);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that);case _:
   return orElse();
 
@@ -78,11 +78,11 @@ return getInput(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AdventOfCodeWebsite_GetDescriptionResponse value)  getDescription,required TResult Function( AdventOfCodeWebsite_GetInputResponse value)  getInput,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( AdventOfCodeWebsite_GetDescription_Response value)  getDescription,required TResult Function( AdventOfCodeWebsite_GetInput_Response value)  getInput,}){
 final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse():
-return getDescription(_that);case AdventOfCodeWebsite_GetInputResponse():
+case AdventOfCodeWebsite_GetDescription_Response():
+return getDescription(_that);case AdventOfCodeWebsite_GetInput_Response():
 return getInput(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -97,11 +97,11 @@ return getInput(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AdventOfCodeWebsite_GetDescriptionResponse value)?  getDescription,TResult? Function( AdventOfCodeWebsite_GetInputResponse value)?  getInput,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( AdventOfCodeWebsite_GetDescription_Response value)?  getDescription,TResult? Function( AdventOfCodeWebsite_GetInput_Response value)?  getInput,}){
 final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse() when getDescription != null:
-return getDescription(_that);case AdventOfCodeWebsite_GetInputResponse() when getInput != null:
+case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
+return getDescription(_that);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that);case _:
   return null;
 
@@ -119,10 +119,10 @@ return getInput(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String description)?  getDescription,TResult Function( String input)?  getInput,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String description,  String exampleInput,  String exampleAnswer)?  getDescription,TResult Function( String input)?  getInput,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse() when getDescription != null:
-return getDescription(_that.description);case AdventOfCodeWebsite_GetInputResponse() when getInput != null:
+case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
+return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that.input);case _:
   return orElse();
 
@@ -141,10 +141,10 @@ return getInput(_that.input);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String description)  getDescription,required TResult Function( String input)  getInput,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String description,  String exampleInput,  String exampleAnswer)  getDescription,required TResult Function( String input)  getInput,}) {final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse():
-return getDescription(_that.description);case AdventOfCodeWebsite_GetInputResponse():
+case AdventOfCodeWebsite_GetDescription_Response():
+return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response():
 return getInput(_that.input);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -159,10 +159,10 @@ return getInput(_that.input);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String description)?  getDescription,TResult? Function( String input)?  getInput,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String description,  String exampleInput,  String exampleAnswer)?  getDescription,TResult? Function( String input)?  getInput,}) {final _that = this;
 switch (_that) {
-case AdventOfCodeWebsite_GetDescriptionResponse() when getDescription != null:
-return getDescription(_that.description);case AdventOfCodeWebsite_GetInputResponse() when getInput != null:
+case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
+return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that.input);case _:
   return null;
 
@@ -174,43 +174,45 @@ return getInput(_that.input);case _:
 /// @nodoc
 
 
-class AdventOfCodeWebsite_GetDescriptionResponse implements AdventOfCodeWebsiteResponse {
-  const AdventOfCodeWebsite_GetDescriptionResponse({required this.description});
+class AdventOfCodeWebsite_GetDescription_Response implements AdventOfCodeWebsiteResponse {
+  const AdventOfCodeWebsite_GetDescription_Response({required this.description, required this.exampleInput, required this.exampleAnswer});
   
 
  final  String description;
+ final  String exampleInput;
+ final  String exampleAnswer;
 
 /// Create a copy of AdventOfCodeWebsiteResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$AdventOfCodeWebsite_GetDescriptionResponseCopyWith<AdventOfCodeWebsite_GetDescriptionResponse> get copyWith => _$AdventOfCodeWebsite_GetDescriptionResponseCopyWithImpl<AdventOfCodeWebsite_GetDescriptionResponse>(this, _$identity);
+$AdventOfCodeWebsite_GetDescription_ResponseCopyWith<AdventOfCodeWebsite_GetDescription_Response> get copyWith => _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl<AdventOfCodeWebsite_GetDescription_Response>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetDescriptionResponse&&(identical(other.description, description) || other.description == description));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetDescription_Response&&(identical(other.description, description) || other.description == description)&&(identical(other.exampleInput, exampleInput) || other.exampleInput == exampleInput)&&(identical(other.exampleAnswer, exampleAnswer) || other.exampleAnswer == exampleAnswer));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description);
+int get hashCode => Object.hash(runtimeType,description,exampleInput,exampleAnswer);
 
 @override
 String toString() {
-  return 'AdventOfCodeWebsiteResponse.getDescription(description: $description)';
+  return 'AdventOfCodeWebsiteResponse.getDescription(description: $description, exampleInput: $exampleInput, exampleAnswer: $exampleAnswer)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $AdventOfCodeWebsite_GetDescriptionResponseCopyWith<$Res> implements $AdventOfCodeWebsiteResponseCopyWith<$Res> {
-  factory $AdventOfCodeWebsite_GetDescriptionResponseCopyWith(AdventOfCodeWebsite_GetDescriptionResponse value, $Res Function(AdventOfCodeWebsite_GetDescriptionResponse) _then) = _$AdventOfCodeWebsite_GetDescriptionResponseCopyWithImpl;
+abstract mixin class $AdventOfCodeWebsite_GetDescription_ResponseCopyWith<$Res> implements $AdventOfCodeWebsiteResponseCopyWith<$Res> {
+  factory $AdventOfCodeWebsite_GetDescription_ResponseCopyWith(AdventOfCodeWebsite_GetDescription_Response value, $Res Function(AdventOfCodeWebsite_GetDescription_Response) _then) = _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl;
 @useResult
 $Res call({
- String description
+ String description, String exampleInput, String exampleAnswer
 });
 
 
@@ -218,18 +220,20 @@ $Res call({
 
 }
 /// @nodoc
-class _$AdventOfCodeWebsite_GetDescriptionResponseCopyWithImpl<$Res>
-    implements $AdventOfCodeWebsite_GetDescriptionResponseCopyWith<$Res> {
-  _$AdventOfCodeWebsite_GetDescriptionResponseCopyWithImpl(this._self, this._then);
+class _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl<$Res>
+    implements $AdventOfCodeWebsite_GetDescription_ResponseCopyWith<$Res> {
+  _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl(this._self, this._then);
 
-  final AdventOfCodeWebsite_GetDescriptionResponse _self;
-  final $Res Function(AdventOfCodeWebsite_GetDescriptionResponse) _then;
+  final AdventOfCodeWebsite_GetDescription_Response _self;
+  final $Res Function(AdventOfCodeWebsite_GetDescription_Response) _then;
 
 /// Create a copy of AdventOfCodeWebsiteResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = null,}) {
-  return _then(AdventOfCodeWebsite_GetDescriptionResponse(
+@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? exampleInput = null,Object? exampleAnswer = null,}) {
+  return _then(AdventOfCodeWebsite_GetDescription_Response(
 description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String,exampleInput: null == exampleInput ? _self.exampleInput : exampleInput // ignore: cast_nullable_to_non_nullable
+as String,exampleAnswer: null == exampleAnswer ? _self.exampleAnswer : exampleAnswer // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -240,8 +244,8 @@ as String,
 /// @nodoc
 
 
-class AdventOfCodeWebsite_GetInputResponse implements AdventOfCodeWebsiteResponse {
-  const AdventOfCodeWebsite_GetInputResponse({required this.input});
+class AdventOfCodeWebsite_GetInput_Response implements AdventOfCodeWebsiteResponse {
+  const AdventOfCodeWebsite_GetInput_Response({required this.input});
   
 
  final  String input;
@@ -250,13 +254,13 @@ class AdventOfCodeWebsite_GetInputResponse implements AdventOfCodeWebsiteRespons
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$AdventOfCodeWebsite_GetInputResponseCopyWith<AdventOfCodeWebsite_GetInputResponse> get copyWith => _$AdventOfCodeWebsite_GetInputResponseCopyWithImpl<AdventOfCodeWebsite_GetInputResponse>(this, _$identity);
+$AdventOfCodeWebsite_GetInput_ResponseCopyWith<AdventOfCodeWebsite_GetInput_Response> get copyWith => _$AdventOfCodeWebsite_GetInput_ResponseCopyWithImpl<AdventOfCodeWebsite_GetInput_Response>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetInputResponse&&(identical(other.input, input) || other.input == input));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetInput_Response&&(identical(other.input, input) || other.input == input));
 }
 
 
@@ -272,8 +276,8 @@ String toString() {
 }
 
 /// @nodoc
-abstract mixin class $AdventOfCodeWebsite_GetInputResponseCopyWith<$Res> implements $AdventOfCodeWebsiteResponseCopyWith<$Res> {
-  factory $AdventOfCodeWebsite_GetInputResponseCopyWith(AdventOfCodeWebsite_GetInputResponse value, $Res Function(AdventOfCodeWebsite_GetInputResponse) _then) = _$AdventOfCodeWebsite_GetInputResponseCopyWithImpl;
+abstract mixin class $AdventOfCodeWebsite_GetInput_ResponseCopyWith<$Res> implements $AdventOfCodeWebsiteResponseCopyWith<$Res> {
+  factory $AdventOfCodeWebsite_GetInput_ResponseCopyWith(AdventOfCodeWebsite_GetInput_Response value, $Res Function(AdventOfCodeWebsite_GetInput_Response) _then) = _$AdventOfCodeWebsite_GetInput_ResponseCopyWithImpl;
 @useResult
 $Res call({
  String input
@@ -284,17 +288,17 @@ $Res call({
 
 }
 /// @nodoc
-class _$AdventOfCodeWebsite_GetInputResponseCopyWithImpl<$Res>
-    implements $AdventOfCodeWebsite_GetInputResponseCopyWith<$Res> {
-  _$AdventOfCodeWebsite_GetInputResponseCopyWithImpl(this._self, this._then);
+class _$AdventOfCodeWebsite_GetInput_ResponseCopyWithImpl<$Res>
+    implements $AdventOfCodeWebsite_GetInput_ResponseCopyWith<$Res> {
+  _$AdventOfCodeWebsite_GetInput_ResponseCopyWithImpl(this._self, this._then);
 
-  final AdventOfCodeWebsite_GetInputResponse _self;
-  final $Res Function(AdventOfCodeWebsite_GetInputResponse) _then;
+  final AdventOfCodeWebsite_GetInput_Response _self;
+  final $Res Function(AdventOfCodeWebsite_GetInput_Response) _then;
 
 /// Create a copy of AdventOfCodeWebsiteResponse
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
-  return _then(AdventOfCodeWebsite_GetInputResponse(
+  return _then(AdventOfCodeWebsite_GetInput_Response(
 input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
 as String,
   ));

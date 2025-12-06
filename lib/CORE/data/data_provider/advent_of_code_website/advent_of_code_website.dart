@@ -17,26 +17,28 @@ final class AdventOfCodeWebsiteDataProvider extends HttpDataProvider {
       ],
   );
 
-  Future<AdventOfCodeWebsite_GetDescriptionResponse>
+  Future<AdventOfCodeWebsite_GetDescription_Response>
   getDescription({ required int year, required int day }) =>
       get('/$year/day/$day',
         interceptors: []
       )
       .then((response) {
         final document = parse(response.data);
-        return AdventOfCodeWebsite_GetDescriptionResponse(
-            description: document.getElementsByClassName('day-desc').first.text,
+        return AdventOfCodeWebsite_GetDescription_Response(
+          description: document.getElementsByClassName('day-desc').first.text,
+          exampleInput: document.getElementsByTagName('code').first.text,
+          exampleAnswer: document.getElementsByTagName('code').elementAt(1).text,
         );
       });
 
-  Future<AdventOfCodeWebsite_GetInputResponse>
+  Future<AdventOfCodeWebsite_GetInput_Response>
   getInput({ required int year, required int day }) =>
       get('/$year/day/$day/input',
         interceptors: [Interceptors.authentication]
       )
       .then((response) {
         final document = parse(response.data);
-        return AdventOfCodeWebsite_GetInputResponse(
+        return AdventOfCodeWebsite_GetInput_Response(
           input: document.body!.text,
         );
       });

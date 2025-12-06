@@ -4,23 +4,6 @@ final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
 
   @override
-  dynamic get exampleAnswer => 3;
-
-  @override
-  String get exampleInput =>
-      'L68\n'
-          'L30\n'
-          'R48\n'
-          'L5\n'
-          'R60\n'
-          'L55\n'
-          'L1\n'
-          'L99\n'
-          'R14\n'
-          'L82\n'
-  ;
-
-  @override
   dynamic solve(String input) {
     /// Implement your logic to solve the puzzle
     final allMoves = toListOfDialMove(input);

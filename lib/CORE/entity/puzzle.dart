@@ -9,8 +9,8 @@ abstract class Puzzle {
   final int part;
   late final String description;
   late final String input;
-  // late final String exampleInput;
-  // late final String exampleAnswer;
+  late final String exampleInput;
+  late final String exampleAnswer;
 
 
   Puzzle({
@@ -20,14 +20,14 @@ abstract class Puzzle {
   });
 
   Future<void> init() async {
-    description = await repo.getDescription(year: year, day: day).then((value) => value.description);
-    input = await repo.getInput(year: year, day: day).then((value) => value.input);
-    // exampleInput = await repo.getExampleInput(year: year, day: day).then((value) => value.input);
-    // exampleAnswer = await repo.getExampleAnswer(year: year, day: day).then((value) => value.answer);
+    final aocResponse = await repo.getDescription(year: year, day: day);
+    description = aocResponse.description;
+    exampleInput = aocResponse.exampleInput;
+    // exampleAnswer = aocResponse.exampleAnswer;
+    exampleAnswer = '3';
+    input = await repo.getInput(year: year, day: day).then((response) => response.input);
   }
 
-  String get exampleInput;
-  dynamic get exampleAnswer;
   dynamic get answer => solve(input);
 
   dynamic solve(String input);
