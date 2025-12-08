@@ -5,22 +5,7 @@ final class Puzzle_2025_1_2 extends Puzzle {
   Puzzle_2025_1_2(): super(year: 2025, day: 1, part: 2);
 
   @override
-  get exampleAnswer => 6;
-
-  @override
-  String get exampleInput =>
-      'L68\n'
-      'L30\n'
-      'R48\n'
-      'L5\n'
-      'R60\n'
-      'L55\n'
-      'L1\n'
-      'L99\n'
-      'R14\n'
-      'L82\n'
-  ;
-
+  dynamic get exampleAnswer => 6;
 
   @override
   solve(String input) {
