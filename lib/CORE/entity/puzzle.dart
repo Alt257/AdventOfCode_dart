@@ -1,7 +1,7 @@
 import 'package:advent_of_code__dart/CORE/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
 
 
-abstract class Puzzle<AnswerType extends Object> {
+abstract class Puzzle {
 
   static final repo = AdventOfCodeWebsiteDataProvider();
 
