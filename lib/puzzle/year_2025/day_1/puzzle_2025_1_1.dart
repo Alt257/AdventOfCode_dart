@@ -7,9 +7,6 @@ final class Puzzle_2025_1_1 extends Puzzle<int> {
   dynamic get exampleAnswer => 3;
 
   @override
-  get exampleAnswer => 3;
-
-  @override
   dynamic solve(String input) {
     /// Implement your logic to solve the puzzle
     final allMoves = toListOfDialMove(input);
