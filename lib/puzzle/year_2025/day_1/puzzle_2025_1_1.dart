@@ -1,28 +1,17 @@
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 
-final class Puzzle_2025_1_1 extends Puzzle {
+final class Puzzle_2025_1_1 extends Puzzle<int> {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
 
   @override
   dynamic get exampleAnswer => 3;
 
   @override
-  String get exampleInput =>
-      'L68\n'
-      'L30\n'
-      'R48\n'
-      'L5\n'
-      'R60\n'
-      'L55\n'
-      'L1\n'
-      'L99\n'
-      'R14\n'
-      'L82\n'
-  ;
+  get exampleAnswer => 3;
 
   @override
   dynamic solve(String input) {
-
+    /// Implement your logic to solve the puzzle
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
     var pointAt0Counter = 0;

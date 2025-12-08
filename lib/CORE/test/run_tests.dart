@@ -6,13 +6,13 @@ export 'package:test/test.dart';
 
 part 'wrong_answer.dart';
 
-void runPuzzleTests(
+Future<void> runPuzzleTests(
       Puzzle puzzle, {
       String? customInput,
       dynamic customAnswer,
       List<WrongAnswer> wrongAnswers = const [],
       void Function(Puzzle puzzle)? runCustomTests,
-  }) {
+  }) async {
   assert((customAnswer != null && customInput != null)
       // || (customAnswer == null && customInput == null),
       // 'You must provide both customInput and customAnswer'
@@ -20,10 +20,12 @@ void runPuzzleTests(
       'When you provide customAnswer, you must also provide customInput'
   );
 
+
   setUpAll(() async {
     await Environment.load();
     await puzzle.init();
   });
+
 
   if (runCustomTests != null) {
     group('Custom tests', () {
@@ -55,7 +57,7 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
 
 
 void testExample(Puzzle puzzle) {
-  test('Example input, answer must be ${puzzle.exampleAnswer}', () {
+  test('Example', () {
     final answer = puzzle.solve(puzzle.exampleInput);
     expect(answer, puzzle.exampleAnswer);
     print('Real input answer should be ${puzzle.answer}');

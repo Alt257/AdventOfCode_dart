@@ -1,6 +1,7 @@
 import 'package:advent_of_code__dart/CORE/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
 
-abstract class Puzzle {
+
+abstract class Puzzle<AnswerType extends Object> {
 
   static final repo = AdventOfCodeWebsiteDataProvider();
 
@@ -9,8 +10,8 @@ abstract class Puzzle {
   final int part;
   late final String description;
   late final String input;
-  // late final String exampleInput;
-  // late final String exampleAnswer;
+  late final String exampleInput;
+  dynamic get exampleAnswer;
 
 
   Puzzle({
@@ -20,14 +21,13 @@ abstract class Puzzle {
   });
 
   Future<void> init() async {
-    description = await repo.getDescription(year: year, day: day).then((value) => value.description);
-    input = await repo.getInput(year: year, day: day).then((value) => value.input);
-    // exampleInput = await repo.getExampleInput(year: year, day: day).then((value) => value.input);
-    // exampleAnswer = await repo.getExampleAnswer(year: year, day: day).then((value) => value.answer);
+    final aocResponse = await repo.getDescription(year: year, day: day);
+    description = aocResponse.description;
+    exampleInput = aocResponse.exampleInput;
+    // exampleAnswer = Parse.to<AnswerType>(aocResponse.exampleAnswer);
+    input = await repo.getInput(year: year, day: day).then((response) => response.input);
   }
 
-  String get exampleInput;
-  dynamic get exampleAnswer;
   dynamic get answer => solve(input);
 
   dynamic solve(String input);
