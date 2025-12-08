@@ -119,10 +119,10 @@ return getInput(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String description,  String exampleInput,  String exampleAnswer)?  getDescription,TResult Function( String input)?  getInput,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String description,  String exampleInput)?  getDescription,TResult Function( String input)?  getInput,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
-return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
+return getDescription(_that.description,_that.exampleInput);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that.input);case _:
   return orElse();
 
@@ -141,10 +141,10 @@ return getInput(_that.input);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String description,  String exampleInput,  String exampleAnswer)  getDescription,required TResult Function( String input)  getInput,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String description,  String exampleInput)  getDescription,required TResult Function( String input)  getInput,}) {final _that = this;
 switch (_that) {
 case AdventOfCodeWebsite_GetDescription_Response():
-return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response():
+return getDescription(_that.description,_that.exampleInput);case AdventOfCodeWebsite_GetInput_Response():
 return getInput(_that.input);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -159,10 +159,10 @@ return getInput(_that.input);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String description,  String exampleInput,  String exampleAnswer)?  getDescription,TResult? Function( String input)?  getInput,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String description,  String exampleInput)?  getDescription,TResult? Function( String input)?  getInput,}) {final _that = this;
 switch (_that) {
 case AdventOfCodeWebsite_GetDescription_Response() when getDescription != null:
-return getDescription(_that.description,_that.exampleInput,_that.exampleAnswer);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
+return getDescription(_that.description,_that.exampleInput);case AdventOfCodeWebsite_GetInput_Response() when getInput != null:
 return getInput(_that.input);case _:
   return null;
 
@@ -175,12 +175,11 @@ return getInput(_that.input);case _:
 
 
 class AdventOfCodeWebsite_GetDescription_Response implements AdventOfCodeWebsiteResponse {
-  const AdventOfCodeWebsite_GetDescription_Response({required this.description, required this.exampleInput, required this.exampleAnswer});
+  const AdventOfCodeWebsite_GetDescription_Response({required this.description, required this.exampleInput});
   
 
  final  String description;
  final  String exampleInput;
- final  String exampleAnswer;
 
 /// Create a copy of AdventOfCodeWebsiteResponse
 /// with the given fields replaced by the non-null parameter values.
@@ -192,16 +191,16 @@ $AdventOfCodeWebsite_GetDescription_ResponseCopyWith<AdventOfCodeWebsite_GetDesc
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetDescription_Response&&(identical(other.description, description) || other.description == description)&&(identical(other.exampleInput, exampleInput) || other.exampleInput == exampleInput)&&(identical(other.exampleAnswer, exampleAnswer) || other.exampleAnswer == exampleAnswer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AdventOfCodeWebsite_GetDescription_Response&&(identical(other.description, description) || other.description == description)&&(identical(other.exampleInput, exampleInput) || other.exampleInput == exampleInput));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,description,exampleInput,exampleAnswer);
+int get hashCode => Object.hash(runtimeType,description,exampleInput);
 
 @override
 String toString() {
-  return 'AdventOfCodeWebsiteResponse.getDescription(description: $description, exampleInput: $exampleInput, exampleAnswer: $exampleAnswer)';
+  return 'AdventOfCodeWebsiteResponse.getDescription(description: $description, exampleInput: $exampleInput)';
 }
 
 
@@ -212,7 +211,7 @@ abstract mixin class $AdventOfCodeWebsite_GetDescription_ResponseCopyWith<$Res> 
   factory $AdventOfCodeWebsite_GetDescription_ResponseCopyWith(AdventOfCodeWebsite_GetDescription_Response value, $Res Function(AdventOfCodeWebsite_GetDescription_Response) _then) = _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl;
 @useResult
 $Res call({
- String description, String exampleInput, String exampleAnswer
+ String description, String exampleInput
 });
 
 
@@ -229,11 +228,10 @@ class _$AdventOfCodeWebsite_GetDescription_ResponseCopyWithImpl<$Res>
 
 /// Create a copy of AdventOfCodeWebsiteResponse
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? exampleInput = null,Object? exampleAnswer = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? description = null,Object? exampleInput = null,}) {
   return _then(AdventOfCodeWebsite_GetDescription_Response(
 description: null == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String,exampleInput: null == exampleInput ? _self.exampleInput : exampleInput // ignore: cast_nullable_to_non_nullable
-as String,exampleAnswer: null == exampleAnswer ? _self.exampleAnswer : exampleAnswer // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

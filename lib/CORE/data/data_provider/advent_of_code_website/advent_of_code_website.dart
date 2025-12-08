@@ -26,8 +26,8 @@ final class AdventOfCodeWebsiteDataProvider extends HttpDataProvider {
         final document = parse(response.data);
         return AdventOfCodeWebsite_GetDescription_Response(
           description: document.getElementsByClassName('day-desc').first.text,
-          exampleInput: document.getElementsByTagName('code').first.text,
-          exampleAnswer: document.getElementsByTagName('code').elementAt(1).text,
+          exampleInput: document.getElementsByTagName('pre').first.text,
+          // exampleAnswer: document.getElementsByTagName('code').elementAt(1).text,
         );
       });
 

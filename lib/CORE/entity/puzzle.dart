@@ -1,5 +1,4 @@
 import 'package:advent_of_code__dart/CORE/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
-import 'package:advent_of_code__dart/CORE/utils/parse.dart';
 
 
 abstract class Puzzle<AnswerType extends Object> {
@@ -12,7 +11,7 @@ abstract class Puzzle<AnswerType extends Object> {
   late final String description;
   late final String input;
   late final String exampleInput;
-  late final dynamic exampleAnswer;
+  dynamic get exampleAnswer;
 
 
   Puzzle({
@@ -25,7 +24,7 @@ abstract class Puzzle<AnswerType extends Object> {
     final aocResponse = await repo.getDescription(year: year, day: day);
     description = aocResponse.description;
     exampleInput = aocResponse.exampleInput;
-    exampleAnswer = Parse.to<AnswerType>(aocResponse.exampleAnswer);
+    // exampleAnswer = Parse.to<AnswerType>(aocResponse.exampleAnswer);
     input = await repo.getInput(year: year, day: day).then((response) => response.input);
   }
 

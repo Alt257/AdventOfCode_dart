@@ -7,7 +7,7 @@ sealed class AdventOfCodeWebsiteResponse with _$AdventOfCodeWebsiteResponse {
   const factory AdventOfCodeWebsiteResponse.getDescription({
     required String description,
     required String exampleInput,
-    required String exampleAnswer,
+    // required String exampleAnswer,
   }) = AdventOfCodeWebsite_GetDescription_Response;
 
   const factory AdventOfCodeWebsiteResponse.getInput({
