@@ -17,41 +17,50 @@ final class Puzzle_2025_1_2 extends Puzzle {
 
     for (final move in allMoves) {
 
-      final sign = move.direction == Direction.left ? -1 : 1;
-      final signedDistance = move.distance * sign;
+      final previousPosition = position;
 
-      final stopAtO = (position + signedDistance) % range == 0;
-
-      if (stopAtO) {
-        counter.increase('stop at 0');
-      }
-
-      if (counter.hasIncreased) {
-        position += signedDistance;
-      }
-
-      // position = makeMove(position, move);
       if (move.direction == Direction.left) {
         position -= move.distance;
         while (position < min) {
           position += range;
-          if(!stopAtO) {
-            counter.increase('move left');
-          }
+          counter.increase('pointed 0 while moving to the left');
         }
 
       } else { // move.direction == Direction.right
         position += move.distance;
         while (position > max) {
           position -= range;
-          if(!stopAtO) {
-            counter.increase('move right');
-          }
+          counter.increase('pointed 0 while moving to the right');
         }
       }
 
-      position += counter.value;
-      if (verbose) print('$move, new position: $position${counter.hasIncreased ? ' counter increased: ${counter.total}(+${counter.value}) reasons: ${counter.reasons}' : ''}');
+      if (position == 0 && counter.hasNotIncreased) {
+        counter.increase('stopped at 0');
+      }
+
+      /////////////////// debug /////////////////
+      if(verbose
+      /// FILTERS to help debug by finding problematic rows
+      // && counter.hasIncreased
+      // && move.distance <100
+      //
+      // detect if we are in wrong position
+      // && position > max   // too high
+      // && position < min    // too low
+      //
+      // && move.distance > 100
+      && position == 0
+      ) {
+        print(
+            '$move'
+            ' - position: $previousPosition -> $position'
+            ' - counter: ${counter.total}'
+            '${counter.hasIncreased ? '(+${counter.value})'
+            ' - ${counter.reasons}' : ''}'
+        );
+      }
+      ///////////////////////////////////////////
+
       counter.reset();
     }
 
@@ -79,5 +88,6 @@ final class Counter {
   int get value => _value;
   int get total => _total;
   bool get hasIncreased => _value > 0;
+  bool get hasNotIncreased => !hasIncreased;
   String get reasonsString => reasons.toString();
 }
