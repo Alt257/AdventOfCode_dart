@@ -29,11 +29,11 @@ Future<void> runPuzzleTests(
 
 
   if (tests != null) {
-    group('tests', () {
+    group('Tests', () {
       tests(puzzle);
     });
   }
-  group('Input tests', () {
+  group('Inputs', () {
     testCustomInput(puzzle, customInput, customAnswer);
     testExample(puzzle);
   });
@@ -46,11 +46,11 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
   if (customInput == null) return;
   final answer = puzzle.solve(customInput);
   if (customAnswer != null) {
-    test('Custom input, answer must be $customAnswer', () {
+    test('Custom - answer must be $customAnswer', () {
       expect(answer, customAnswer);
     });
   } else {
-    test('/!\\ Custom input - NO VALUE EXPECTED /!\\', () {
+    test('Custom  /!\\ NO ANSWER EXPECTED /!\\', () {
       print('Custom input answer should be $answer');
     });
   }
