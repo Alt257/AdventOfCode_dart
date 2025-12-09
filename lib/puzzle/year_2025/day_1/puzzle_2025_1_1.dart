@@ -14,14 +14,20 @@ final class Puzzle_2025_1_1 extends Puzzle {
     var pointAt0Counter = 0;
 
     for (final move in allMoves) {
+      var hasIncreased = false;
+      final previousPosition = position;
       position = makeMove(position, move);
 
       if (position == 0) {
         pointAt0Counter++;
+        hasIncreased = true;
       }
 
       if(verbose) {
-        print('${move.toShortString()}');
+        print('${move.toShortString()}'
+            ' - position: [$previousPosition]->[$position]'
+            ' - pointAt0Counter: $pointAt0Counter'
+            '${hasIncreased ? '(+1)' : ''}');
       }
     }
 
