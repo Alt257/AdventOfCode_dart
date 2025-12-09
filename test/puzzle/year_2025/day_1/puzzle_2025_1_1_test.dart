@@ -1,3 +1,4 @@
+import 'package:advent_of_code__dart/CORE/entity/test_input.dart';
 import 'package:advent_of_code__dart/CORE/test/run_tests.dart';
 import 'package:advent_of_code__dart/puzzle/year_2025/day_1/puzzle_2025_1_1.dart';
 
@@ -21,41 +22,42 @@ Future<void> main() async {
           'L150\n'
           'L50\n'
           'L900\n',
-      runCustomTests: (puzzle) {
+
+      tests: (puzzle) {
 
         group('parseDirection_test', () {
-          test('parseDirection_L_test', () {
-            final direction = parseDirection('L68');
-            expect(direction, Direction.left);
-          });
+          final testData = <TestData>[
+            TestData('L68', expect: Direction.left),
+            TestData('L642', expect: Direction.left),
+            TestData('R4', expect: Direction.right),
+            TestData('R48', expect: Direction.right),
+          ];
 
-          test('parseDirection_R_test', () {
-            final direction = parseDirection('R4');
-            expect(direction, Direction.right);
-          });
-
-          test('parseDirection_R_test', () {
-            final direction = parseDirection('R48');
-            expect(direction, Direction.right);
-          });
+          for (final data in testData) {
+            test('${data.input}: direction must be [${data.expect}]', () {
+              final direction = parseDirection(data.input);
+              expect(direction, data.expect);
+            });
+          }
         });
+
 
         group('parseDistance_test', () {
-          test('parseDistance_5_test', () {
-            final distance = parseDistance('L5');
-            expect(distance, 5);
-          });
+          final testData = <TestData>[
+            TestData('L5', expect: 5),
+            TestData('L68', expect: 68),
+            TestData('R4', expect: 4),
+            TestData('R688', expect: 688),
+          ];
 
-          test('parseDistance_68_test', () {
-            final distance = parseDistance('L68');
-            expect(distance, 68);
-          });
-
-          test('parseDistance_48_test', () {
-            final distance = parseDistance('R48');
-            expect(distance, 48);
-          });
+          for (final data in testData) {
+            test('${data.input}: distance must be [${data.expect}]', () {
+              final distance = parseDistance(data.input);
+              expect(distance, data.expect);
+            });
+          }
         });
+
 
         test('toListOfDialMove_test', () {
           final list = toListOfDialMove(puzzle.exampleInput);
@@ -63,18 +65,41 @@ Future<void> main() async {
           expect(list.length, 10);
         });
 
+
         group('makeMove_test()', () {
-          test('makeMove_0_L1_test', () {
-            final position = makeMove(0, DialMove(Direction.left, 1));
-            expect(position, 99);
-          });
+          final testData = <TestData>[
+            TestData(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
+            TestData(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
+            TestData(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
+          ];
+
+          for (final data in testData) {
+            test('${data.input}: must stop at [${data.expect}]', () {
+              final position = makeMove(
+                  data.input.initialPosition, data.input.move);
+              expect(position, data.expect);
+            });
+          }
         });
 
       },
 
-      wrongAnswers: [
-        WrongAnswer(290, queue: 'is too low', matcher: greaterThan),
-        WrongAnswer(99999, queue: 'is too high', matcher: lessThan),
+      hints: [
+        Hint(greaterThan, 290, description: '290 is too low'),
+        Hint(lessThan, 99999),
       ]
   );
+}
+
+
+final class MaKeMoveTestInput implements TestInput {
+  final int initialPosition;
+  final DialMove move;
+
+  const MaKeMoveTestInput(this.initialPosition, this.move);
+
+  @override
+  String toString() => 'move ${move.distance}'
+      ' to the ${move.direction.name}'
+      ' from [$initialPosition]';
 }

@@ -1,17 +1,19 @@
+import 'package:advent_of_code__dart/CORE/entity/hint.dart';
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
 import 'package:test/test.dart';
 
+export 'package:advent_of_code__dart/CORE/entity/hint.dart';
+export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
+export 'package:advent_of_code__dart/CORE/entity/test_data.dart';
 export 'package:test/test.dart';
-
-part 'wrong_answer.dart';
 
 Future<void> runPuzzleTests(
       Puzzle puzzle, {
       String? customInput,
       dynamic customAnswer,
-      List<WrongAnswer> wrongAnswers = const [],
-      void Function(Puzzle puzzle)? runCustomTests,
+      List<Hint> hints = const [],
+      void Function(Puzzle puzzle)? tests,
   }) async {
   assert((customAnswer != null && customInput != null)
       // || (customAnswer == null && customInput == null),
@@ -27,16 +29,16 @@ Future<void> runPuzzleTests(
   });
 
 
-  if (runCustomTests != null) {
-    group('Custom tests', () {
-      runCustomTests(puzzle);
+  if (tests != null) {
+    group('Tests', () {
+      tests(puzzle);
     });
   }
-  group('Input tests', () {
+  group('Inputs', () {
     testCustomInput(puzzle, customInput, customAnswer);
     testExample(puzzle);
   });
-  testPreviousWrongAnswers(puzzle, wrongAnswers);
+  testAllHints(puzzle, hints);
 }
 
 
@@ -45,11 +47,11 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
   if (customInput == null) return;
   final answer = puzzle.solve(customInput);
   if (customAnswer != null) {
-    test('Custom input, answer must be $customAnswer', () {
+    test('Custom - answer must be $customAnswer', () {
       expect(answer, customAnswer);
     });
   } else {
-    test('/!\\ Custom input - NO VALUE EXPECTED /!\\', () {
+    test('Custom  /!\\ NO ANSWER EXPECTED /!\\', () {
       print('Custom input answer should be $answer');
     });
   }
@@ -65,25 +67,18 @@ void testExample(Puzzle puzzle) {
 }
 
 
-void testPreviousWrongAnswers(Puzzle puzzle, List<WrongAnswer> wrongAnswers) {
-  if (wrongAnswers.isEmpty) return;
-  group('Previous wrong answers', () {
-    for (final wrongAnswer in wrongAnswers) {
-      testPreviousWrongAnswer(puzzle, wrongAnswer);
+void testAllHints(Puzzle puzzle, List<Hint> hints) {
+  if (hints.isEmpty) return;
+  group('Hints', () {
+    for (final hint in hints) {
+      testHint(puzzle, hint);
     }
   });
 }
 
-void testPreviousWrongAnswer(Puzzle puzzle, WrongAnswer wrongAnswer) {
-  if (wrongAnswer.matcher != null) {
-    test(wrongAnswer.toString(), () {
-      final answer = puzzle.solve(puzzle.input);
-      expect(answer, wrongAnswer.matcher!(wrongAnswer.value));
-    });
-  } else {
-    test('Answer must not be ${wrongAnswer.value}', () {
-      final answer = puzzle.solve(puzzle.input);
-      expect(answer, isNot(wrongAnswer.value));
-    });
-  }
+void testHint(Puzzle puzzle, Hint hint) {
+  test(hint.toString(), () {
+    final answer = puzzle.solve(puzzle.input);
+    expect(answer, hint.matcher(hint.value));
+  });
 }

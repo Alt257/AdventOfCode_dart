@@ -4,7 +4,7 @@ final class Puzzle_2025_1_1 extends Puzzle {
   Puzzle_2025_1_1(): super(year: 2025, day: 1, part: 1);
 
   @override
-  dynamic get exampleAnswer => 3;
+  get exampleAnswer => 3;
 
   @override
   dynamic solve(String input) {
@@ -41,8 +41,9 @@ final class DialMove {
 
   final Direction direction;
   final int distance;
+
   @override
-  toString() => '${direction == Direction.left ? 'L' : 'R'}$distance';
+  String toString() => '$distance to the ${direction.name}';
 }
 
 
