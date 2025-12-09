@@ -69,6 +69,8 @@ Future<void> main() async {
         group('makeMove_test()', () {
           final testData = <TestData>[
             TestData(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
+            TestData(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
+            TestData(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
           ];
 
           for (final data in testData) {
