@@ -35,8 +35,9 @@ Future<void> runPuzzleTests(
     });
   }
   group('Inputs', () {
+    testExampleInput(puzzle);
     testCustomInput(puzzle, customInput, customAnswer);
-    testExample(puzzle);
+    testRealInput(puzzle);
   });
   testAllHints(puzzle, hints);
 }
@@ -45,24 +46,39 @@ Future<void> runPuzzleTests(
 
 void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
   if (customInput == null) return;
-  final answer = puzzle.solve(customInput);
-  if (customAnswer != null) {
-    test('Custom - answer must be $customAnswer', () {
+  final description = customAnswer != null
+      ? 'Custom - answer must be $customAnswer'
+      : 'Custom  /!\\ NO ANSWER EXPECTED /!\\';
+
+  test(description, () {
+    print('====================================== [ Custom ] =======================================');
+    final answer = puzzle.solve(customInput, true);
+    print('=========================================================================================');
+    if (customAnswer != null) {
       expect(answer, customAnswer);
-    });
-  } else {
-    test('Custom  /!\\ NO ANSWER EXPECTED /!\\', () {
-      print('Custom input answer should be $answer');
-    });
-  }
+    } else {
+      print('Custom input answer should be [$answer]');
+    }
+  });
 }
 
 
-void testExample(Puzzle puzzle) {
+void testRealInput(Puzzle puzzle) {
+  test('Real  /!\\ NO ANSWER EXPECTED /!\\', () {
+    print('====================================== [ Real ] =======================================');
+    final answer = puzzle.solve(puzzle.input, true);
+    print('=========================================================================================');
+    print('Puzzle answer should be [$answer]');
+  });
+}
+
+
+void testExampleInput(Puzzle puzzle) {
   test('Example', () {
-    final answer = puzzle.solve(puzzle.exampleInput);
-    expect(answer, puzzle.exampleAnswer);
-    print('Real input answer should be ${puzzle.answer}');
+    print('====================================== [ Example ] ======================================');
+    expect(puzzle.solve(puzzle.exampleInput, true), puzzle.exampleAnswer);
+    print('=========================================================================================');
+    print('Example answer is [${puzzle.exampleAnswer}]');
   });
 }
 
