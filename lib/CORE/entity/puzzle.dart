@@ -30,6 +30,6 @@ abstract class Puzzle {
 
   dynamic get answer => solve(input);
 
-  dynamic solve(String input);
+  dynamic solve(String input, [bool verbose = false]);
 
 }

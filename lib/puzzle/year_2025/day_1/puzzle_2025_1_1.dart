@@ -7,17 +7,32 @@ final class Puzzle_2025_1_1 extends Puzzle {
   get exampleAnswer => 3;
 
   @override
-  dynamic solve(String input) {
+  dynamic solve(String input, [bool verbose = false]) {
     /// Implement your logic to solve the puzzle
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
     var pointAt0Counter = 0;
 
     for (final move in allMoves) {
+      var hasIncreased = false;
+      final previousPosition = position;
       position = makeMove(position, move);
 
       if (position == 0) {
         pointAt0Counter++;
+        hasIncreased = true;
+      }
+
+      if(verbose
+      /// you can add filters to print only desidered rows
+      /// for debuging your logic
+      /// comment all filters to print all rows
+      && hasIncreased // print only when counter has increased
+      ) {
+        print('${move.toShortString()}'
+            ' - position: [$previousPosition]->[$position]'
+            ' - pointAt0Counter: $pointAt0Counter'
+            '${hasIncreased ? '(+1)' : ''}');
       }
     }
 
