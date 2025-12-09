@@ -42,25 +42,19 @@ Future<void> main() async {
 
 
         group('parseDistance_test', () {
+          final testData = <TestData>[
+            TestData('L5', expect: 5),
+            TestData('L68', expect: 68),
+            TestData('R4', expect: 4),
+            TestData('R688', expect: 688),
+          ];
 
-          final input2_1 = 'L5';
-          test('$input2_1: distance must be 5', () {
-            final distance = parseDistance(input2_1);
-            expect(distance, 5);
-          });
-
-          final input2_2 = 'L68';
-          test('$input2_2: distance must be 68', () {
-            final distance = parseDistance(input2_2);
-            expect(distance, 68);
-          });
-
-          final input2_3 = 'R48';
-          test('$input2_3: distance must be 48', () {
-            final distance = parseDistance(input2_3);
-            expect(distance, 48);
-          });
-
+          for (final data in testData) {
+            test('${data.input}: distance must be [${data.expect}]', () {
+              final distance = parseDistance(data.input);
+              expect(distance, data.expect);
+            });
+          }
         });
 
 
