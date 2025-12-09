@@ -8,7 +8,7 @@ final class Puzzle_2025_1_2 extends Puzzle {
   dynamic get exampleAnswer => 6;
 
   @override
-  solve(String input) {
+  solve(String input, [bool verbose = false]) {
     const verbose = true;
 
     final allMoves = toListOfDialMove(input);
