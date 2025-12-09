@@ -41,6 +41,9 @@ final class DialMove {
 
   final Direction direction;
   final int distance;
+
+  @override
+  String toString() => '$distance to the ${direction.name}';
 }
 
 
