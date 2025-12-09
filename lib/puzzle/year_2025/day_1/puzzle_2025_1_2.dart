@@ -23,19 +23,19 @@ final class Puzzle_2025_1_2 extends Puzzle {
         position -= move.distance;
         while (position < min) {
           position += range;
-          counter.increase('pointed 0 while moving to the left');
+          counter.increase('pointed [0] while moving [<-]');
         }
 
       } else { // move.direction == Direction.right
         position += move.distance;
         while (position > max) {
           position -= range;
-          counter.increase('pointed 0 while moving to the right');
+          counter.increase('pointed [0] while moving [->]');
         }
       }
 
       if (position == 0 && counter.hasNotIncreased) {
-        counter.increase('stopped at 0');
+        counter.increase('stopped at [0]');
       }
 
       /////////////////// debug /////////////////
@@ -52,8 +52,8 @@ final class Puzzle_2025_1_2 extends Puzzle {
       && position == 0
       ) {
         print(
-            '$move'
-            ' - position: $previousPosition -> $position'
+            '${move.toShortString()}'
+            ' - position: [$previousPosition] -> [$position]'
             ' - counter: ${counter.total}'
             '${counter.hasIncreased ? '(+${counter.value})'
             ' - ${counter.reasons}' : ''}'

@@ -44,6 +44,8 @@ final class DialMove {
 
   @override
   String toString() => '$distance to the ${direction.name}';
+
+  toShortString() => '${direction == Direction.left ? '-' : '+'}$distance';
 }
 
 
