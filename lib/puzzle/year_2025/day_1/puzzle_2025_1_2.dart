@@ -41,7 +41,7 @@ final class Puzzle_2025_1_2 extends Puzzle {
       /////////////////// debug /////////////////
       if(verbose
       /// FILTERS to help debug by finding problematic rows
-      && counter.hasIncreased
+      // && counter.hasIncreased
       // && move.distance <100
       //
       // detect if we are in wrong position
@@ -50,6 +50,12 @@ final class Puzzle_2025_1_2 extends Puzzle {
       //
       // && move.distance > 100
       // && position == 0
+      // && position != 0
+      //
+      // FOUND the problematic rows
+      && previousPosition == 0
+      && counter.hasIncreased
+      && move.distance < 100
       ) {
         print(
             '${move.toShortString()}'
