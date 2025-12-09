@@ -5,6 +5,7 @@ import 'package:test/test.dart';
 
 export 'package:advent_of_code__dart/CORE/entity/hint.dart';
 export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
+export 'package:advent_of_code__dart/CORE/entity/test_data.dart';
 export 'package:test/test.dart';
 
 Future<void> runPuzzleTests(
