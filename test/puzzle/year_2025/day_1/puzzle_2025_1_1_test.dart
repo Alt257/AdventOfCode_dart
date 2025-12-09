@@ -73,9 +73,9 @@ Future<void> main() async {
 
       },
 
-      wrongAnswers: [
-        WrongAnswer(greaterThan, 290, description: '290 is too low'),
-        WrongAnswer(lessThan, 99999),
+      hints: [
+        Hint(greaterThan, 290, description: '290 is too low'),
+        Hint(lessThan, 99999),
       ]
   );
 }

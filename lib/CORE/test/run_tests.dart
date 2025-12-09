@@ -1,17 +1,17 @@
+import 'package:advent_of_code__dart/CORE/entity/hint.dart';
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
-import 'package:advent_of_code__dart/CORE/entity/wrong_answer.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
 import 'package:test/test.dart';
 
+export 'package:advent_of_code__dart/CORE/entity/hint.dart';
 export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
-export 'package:advent_of_code__dart/CORE/entity/wrong_answer.dart';
 export 'package:test/test.dart';
 
 Future<void> runPuzzleTests(
       Puzzle puzzle, {
       String? customInput,
       dynamic customAnswer,
-      List<WrongAnswer> wrongAnswers = const [],
+      List<Hint> hints = const [],
       void Function(Puzzle puzzle)? runCustomTests,
   }) async {
   assert((customAnswer != null && customInput != null)
@@ -37,7 +37,7 @@ Future<void> runPuzzleTests(
     testCustomInput(puzzle, customInput, customAnswer);
     testExample(puzzle);
   });
-  testPreviousWrongAnswers(puzzle, wrongAnswers);
+  testAllHints(puzzle, hints);
 }
 
 
@@ -66,18 +66,18 @@ void testExample(Puzzle puzzle) {
 }
 
 
-void testPreviousWrongAnswers(Puzzle puzzle, List<WrongAnswer> wrongAnswers) {
-  if (wrongAnswers.isEmpty) return;
-  group('Previous wrong answers', () {
-    for (final wrongAnswer in wrongAnswers) {
-      testPreviousWrongAnswer(puzzle, wrongAnswer);
+void testAllHints(Puzzle puzzle, List<Hint> hints) {
+  if (hints.isEmpty) return;
+  group('Hints', () {
+    for (final hint in hints) {
+      testHint(puzzle, hint);
     }
   });
 }
 
-void testPreviousWrongAnswer(Puzzle puzzle, WrongAnswer wrongAnswer) {
-  test(wrongAnswer.toString(), () {
+void testHint(Puzzle puzzle, Hint hint) {
+  test(hint.toString(), () {
     final answer = puzzle.solve(puzzle.input);
-    expect(answer, wrongAnswer.matcher(wrongAnswer.value));
+    expect(answer, hint.matcher(hint.value));
   });
 }
