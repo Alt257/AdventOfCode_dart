@@ -1,3 +1,4 @@
+import 'package:advent_of_code__dart/CORE/entity/test_input.dart';
 import 'package:advent_of_code__dart/CORE/test/run_tests.dart';
 import 'package:advent_of_code__dart/puzzle/year_2025/day_1/puzzle_2025_1_1.dart';
 
@@ -66,14 +67,17 @@ Future<void> main() async {
 
 
         group('makeMove_test()', () {
-          DialMove move;
+          final testData = <TestData>[
+            TestData(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
+          ];
 
-          move = DialMove(Direction.left, 2);
-          var initialPosition = 1;
-          test('$move from $initialPosition: position must be 99', () {
-            final position = makeMove(initialPosition, move);
-            expect(position, 99);
-          });
+          for (final data in testData) {
+            test('${data.input}: must stop at [${data.expect}]', () {
+              final position = makeMove(
+                  data.input.initialPosition, data.input.move);
+              expect(position, data.expect);
+            });
+          }
         });
 
       },
@@ -83,4 +87,17 @@ Future<void> main() async {
         Hint(lessThan, 99999),
       ]
   );
+}
+
+
+final class MaKeMoveTestInput implements TestInput {
+  final int initialPosition;
+  final DialMove move;
+
+  const MaKeMoveTestInput(this.initialPosition, this.move);
+
+  @override
+  String toString() => 'move ${move.distance}'
+      ' to the ${move.direction.name}'
+      ' from [$initialPosition]';
 }
