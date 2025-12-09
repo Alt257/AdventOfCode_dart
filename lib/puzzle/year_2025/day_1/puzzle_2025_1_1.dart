@@ -23,7 +23,12 @@ final class Puzzle_2025_1_1 extends Puzzle {
         hasIncreased = true;
       }
 
-      if(verbose) {
+      if(verbose
+      /// you can add filters to print only desidered rows
+      /// for debuging your logic
+      /// comment all filters to print all rows
+      && hasIncreased // print only when counter has increased
+      ) {
         print('${move.toShortString()}'
             ' - position: [$previousPosition]->[$position]'
             ' - pointAt0Counter: $pointAt0Counter'
