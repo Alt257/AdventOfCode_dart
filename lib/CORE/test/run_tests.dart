@@ -1,10 +1,11 @@
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
+import 'package:advent_of_code__dart/CORE/entity/wrong_answer.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
 import 'package:test/test.dart';
 
+export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
+export 'package:advent_of_code__dart/CORE/entity/wrong_answer.dart';
 export 'package:test/test.dart';
-
-part 'wrong_answer.dart';
 
 Future<void> runPuzzleTests(
       Puzzle puzzle, {
@@ -75,15 +76,8 @@ void testPreviousWrongAnswers(Puzzle puzzle, List<WrongAnswer> wrongAnswers) {
 }
 
 void testPreviousWrongAnswer(Puzzle puzzle, WrongAnswer wrongAnswer) {
-  if (wrongAnswer.matcher != null) {
-    test(wrongAnswer.toString(), () {
-      final answer = puzzle.solve(puzzle.input);
-      expect(answer, wrongAnswer.matcher!(wrongAnswer.value));
-    });
-  } else {
-    test('Answer must not be ${wrongAnswer.value}', () {
-      final answer = puzzle.solve(puzzle.input);
-      expect(answer, isNot(wrongAnswer.value));
-    });
-  }
+  test(wrongAnswer.toString(), () {
+    final answer = puzzle.solve(puzzle.input);
+    expect(answer, wrongAnswer.matcher(wrongAnswer.value));
+  });
 }

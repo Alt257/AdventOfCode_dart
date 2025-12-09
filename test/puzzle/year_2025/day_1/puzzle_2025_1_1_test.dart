@@ -21,6 +21,7 @@ Future<void> main() async {
           'L150\n'
           'L50\n'
           'L900\n',
+
       runCustomTests: (puzzle) {
 
         group('parseDirection_test', () {
@@ -73,8 +74,8 @@ Future<void> main() async {
       },
 
       wrongAnswers: [
-        WrongAnswer(290, queue: 'is too low', matcher: greaterThan),
-        WrongAnswer(99999, queue: 'is too high', matcher: lessThan),
+        WrongAnswer(greaterThan, 290, description: '290 is too low'),
+        WrongAnswer(lessThan, 99999),
       ]
   );
 }
