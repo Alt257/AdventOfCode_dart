@@ -23,25 +23,25 @@ final class Puzzle_2025_1_2 extends Puzzle {
         position -= move.distance;
         while (position < min) {
           position += range;
-          counter.increase('pointed [0] while moving [<-]');
+          counter.increase('pointed [0] moving [${move.direction.name}]');
         }
 
       } else { // move.direction == Direction.right
         position += move.distance;
         while (position > max) {
           position -= range;
-          counter.increase('pointed [0] while moving [->]');
+          counter.increase('pointed [0] moving [${move.direction.name}]');
         }
       }
 
       if (position == 0 && counter.hasNotIncreased) {
-        counter.increase('stopped at [0]');
+        counter.increase('stopped at [$position]');
       }
 
       /////////////////// debug /////////////////
       if(verbose
       /// FILTERS to help debug by finding problematic rows
-      // && counter.hasIncreased
+      && counter.hasIncreased
       // && move.distance <100
       //
       // detect if we are in wrong position
@@ -49,14 +49,14 @@ final class Puzzle_2025_1_2 extends Puzzle {
       // && position < min    // too low
       //
       // && move.distance > 100
-      && position == 0
+      // && position == 0
       ) {
         print(
             '${move.toShortString()}'
             ' - position: [$previousPosition] -> [$position]'
             ' - counter: ${counter.total}'
             '${counter.hasIncreased ? '(+${counter.value})'
-            ' - ${counter.reasons}' : ''}'
+            ' - ${counter.reasons.entries.map((e) => 'reason: ${e.key}').toString().replaceAll('(', '').replaceAll(')','')}' : ''}'
         );
       }
       ///////////////////////////////////////////
