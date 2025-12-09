@@ -22,7 +22,7 @@ Future<void> main() async {
           'L50\n'
           'L900\n',
 
-      runCustomTests: (puzzle) {
+      tests: (puzzle) {
 
         group('parseDirection_test', () {
           test('parseDirection_L_test', () {

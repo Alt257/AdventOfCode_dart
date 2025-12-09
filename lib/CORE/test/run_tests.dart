@@ -12,7 +12,7 @@ Future<void> runPuzzleTests(
       String? customInput,
       dynamic customAnswer,
       List<Hint> hints = const [],
-      void Function(Puzzle puzzle)? runCustomTests,
+      void Function(Puzzle puzzle)? tests,
   }) async {
   assert((customAnswer != null && customInput != null)
       // || (customAnswer == null && customInput == null),
@@ -28,9 +28,9 @@ Future<void> runPuzzleTests(
   });
 
 
-  if (runCustomTests != null) {
-    group('Custom tests', () {
-      runCustomTests(puzzle);
+  if (tests != null) {
+    group('tests', () {
+      tests(puzzle);
     });
   }
   group('Input tests', () {
