@@ -8,16 +8,10 @@ void main() {
             'D421\n',
 
     tests: (puzzle) {
-
-      group('known values', () {
-        test('should be greater than part 1 answer', () {
-          expect(puzzle.answer, greaterThan(1086));
-        });
-      });
-
     },
 
     hints: [
+      Hint(greaterThan, 1086),
       Hint(lessThan, 6294),
     ],
   );
