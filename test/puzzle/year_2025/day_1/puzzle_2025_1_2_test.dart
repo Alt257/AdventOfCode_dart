@@ -7,7 +7,7 @@ void main() {
             'L323\n'
             'D421\n',
 
-    runCustomTests: (puzzle) {
+    tests: (puzzle) {
 
       group('known values', () {
         test('should be greater than part 1 answer', () {
@@ -17,8 +17,8 @@ void main() {
 
     },
 
-    wrongAnswers: [
-      WrongAnswer(6294, queue: 'is too high', matcher: lessThan),
+    hints: [
+      Hint(lessThan, 6294),
     ],
   );
 }
