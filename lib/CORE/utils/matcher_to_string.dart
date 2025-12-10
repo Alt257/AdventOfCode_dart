@@ -6,7 +6,7 @@ extension MatcherToString on Matcher {
       matcher == equals ? '==' :
       matcher == equalsIgnoringCase ? '==' :
       matcher == equalsIgnoringWhitespace ? '==' :
-      // matcher == notEquals ? '!=' :
+      matcher == isNot ? '!=' :
       matcher == greaterThan ? '>' :
       matcher == greaterThanOrEqualTo ? '>=' :
       matcher == lessThan ? '<' :
