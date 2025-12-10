@@ -13,6 +13,7 @@ void main() {
     hints: [
       Hint(greaterThan, 1086),
       Hint(lessThan, 6294),
+      Hint(isNot, 6175),
     ],
   );
 }

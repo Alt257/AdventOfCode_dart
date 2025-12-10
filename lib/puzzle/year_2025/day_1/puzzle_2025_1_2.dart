@@ -21,6 +21,9 @@ final class Puzzle_2025_1_2 extends Puzzle {
 
       if (move.direction == Direction.left) {
         position -= move.distance;
+        if (position < min && previousPosition == 0) {
+          position += range;
+        }
         while (position < min) {
           position += range;
           counter.increase('pointed [0] moving [${move.direction.name}]');
