@@ -9,7 +9,6 @@ final class Puzzle_2025_1_2 extends Puzzle {
 
   @override
   solve(String input, [bool verbose = false]) {
-    const verbose = true;
 
     final allMoves = toListOfDialMove(input);
     var position = startingPosition;
@@ -17,55 +16,53 @@ final class Puzzle_2025_1_2 extends Puzzle {
 
     for (final move in allMoves) {
 
+      final step = move.direction == Direction.left ? -1 : 1;
       final previousPosition = position;
 
-      if (move.direction == Direction.left) {
-        position -= move.distance;
-        if (position < min && previousPosition == 0) {
-          position += range;
-        }
-        while (position < min) {
-          position += range;
-          counter.increase('pointed [0] moving [${move.direction.name}]');
+      for (var i = 0; i < move.distance; i++) {
+        position += step;
+
+        if (position < min) {
+          position = max;
+        } else if (position > max) {
+          position = min;
         }
 
-      } else { // move.direction == Direction.right
-        position += move.distance;
-        while (position > max) {
-          position -= range;
-          counter.increase('pointed [0] moving [${move.direction.name}]');
+        if (position == 0) {
+          counter.increase(i == move.distance - 1
+              ? 'stopped at [$position]'
+              : 'pointed at [0] while moving ${move.direction.name}'
+          );
         }
       }
 
-      if (position == 0 && counter.hasNotIncreased) {
-        counter.increase('stopped at [$position]');
-      }
 
       /////////////////// debug /////////////////
       if(verbose
       /// FILTERS to help debug by finding problematic rows
-      // && counter.hasIncreased
-      // && move.distance <100
-      //
       // detect if we are in wrong position
       // && position > max   // too high
       // && position < min    // too low
       //
+      // && counter.hasIncreased
+      // && counter.hasNotIncreased
+      // && move.direction == Direction.left
+      // && move.direction == Direction.right
       // && move.distance > 100
+      // && move.distance < 100
       // && position == 0
       // && position != 0
-      //
-      // FOUND the problematic rows
-      && previousPosition == 0
-      && counter.hasIncreased
-      && move.distance < 100
+      // && previousPosition == 0
+      // && counter.value != offset
+      // && move.distance != previousPosition
+      // && counter.value != 1
+      // && counter.reasons.length > 1
       ) {
         print(
-            '${move.toShortString()}'
-            ' - position: [$previousPosition] -> [$position]'
+            '[$previousPosition]--${move.toShortString()}-->[$position]'
             ' - counter: ${counter.total}'
             '${counter.hasIncreased ? '(+${counter.value})'
-            ' - ${counter.reasons.entries.map((e) => 'reason: ${e.key}').toString().replaceAll('(', '').replaceAll(')','')}' : ''}'
+            ' ${counter.reasons.entries.map((e) => '(${e.value}) ${e.key}')}' : ''}'
         );
       }
       ///////////////////////////////////////////
