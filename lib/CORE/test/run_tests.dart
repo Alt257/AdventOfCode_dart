@@ -35,8 +35,8 @@ Future<void> runPuzzleTests(
     });
   }
   group('Inputs', () {
-    testExampleInput(puzzle);
     testCustomInput(puzzle, customInput, customAnswer);
+    testExampleInput(puzzle);
     testRealInput(puzzle);
   });
   testAllHints(puzzle, hints);
