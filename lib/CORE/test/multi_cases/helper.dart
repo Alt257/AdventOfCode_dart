@@ -47,6 +47,8 @@ void testOnCases(Function function,
       test(caseDescription
             .replaceAll('[input]', testCase.input.toString())
             .replaceAll('[expect]', testCase.expect.toString())
+
+            // Replace [n] with the n-th element of the input list
             .replaceAllMapped(RegExp(r'\[(\d+)\]'), (match) {
                 final index = int.parse(match.group(1)!) - 1;
                 return '[${testCase.inputList[index]}]';
