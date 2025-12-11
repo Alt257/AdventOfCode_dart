@@ -26,11 +26,16 @@ export 'test_input.dart';
 ///
 
 void testOnCases(Function function, String description, List<TestCase> testCases) {
-  for (final testCase in testCases) {
-    test(description
-        .replaceAll('[input]', testCase.input.toString())
-        .replaceAll('[expect]', testCase.expect.toString()), () {
-      expect(Function.apply(function, testCase.input), testCase.expect);
-    });
-  }
+  // Extract name from "Closure: ... from Function 'parseDirection': ..."
+  final match = RegExp(r"'(.*?)'").firstMatch(function.toString());
+  final functionName = match?.group(1) ?? 'Unknown Function';
+  group('$functionName(...)', () {
+    for (final testCase in testCases) {
+      test(description
+          .replaceAll('[input]', testCase.input.toString())
+          .replaceAll('[expect]', testCase.expect.toString()), () {
+        expect(Function.apply(function, testCase.inputList), testCase.expect);
+      });
+    }
+  });
 }
