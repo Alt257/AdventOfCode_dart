@@ -26,11 +26,11 @@ Future<void> main() async {
       tests: (puzzle) {
 
         group('parseDirection_test', () {
-          final testData = <TestData>[
-            TestData('L68', expect: Direction.left),
-            TestData('L642', expect: Direction.left),
-            TestData('R4', expect: Direction.right),
-            TestData('R48', expect: Direction.right),
+          final testData = <TestCase>[
+            TestCase('L68', expect: Direction.left),
+            TestCase('L642', expect: Direction.left),
+            TestCase('R4', expect: Direction.right),
+            TestCase('R48', expect: Direction.right),
           ];
 
           for (final data in testData) {
@@ -43,11 +43,11 @@ Future<void> main() async {
 
 
         group('parseDistance_test', () {
-          final testData = <TestData>[
-            TestData('L5', expect: 5),
-            TestData('L68', expect: 68),
-            TestData('R4', expect: 4),
-            TestData('R688', expect: 688),
+          final testData = <TestCase>[
+            TestCase('L5', expect: 5),
+            TestCase('L68', expect: 68),
+            TestCase('R4', expect: 4),
+            TestCase('R688', expect: 688),
           ];
 
           for (final data in testData) {
@@ -67,10 +67,10 @@ Future<void> main() async {
 
 
         group('makeMove_test()', () {
-          final testData = <TestData>[
-            TestData(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
-            TestData(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
-            TestData(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
+          final testData = <TestCase>[
+            TestCase(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
+            TestCase(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
+            TestCase(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
           ];
 
           for (final data in testData) {
