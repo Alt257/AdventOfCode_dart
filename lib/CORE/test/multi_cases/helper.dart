@@ -13,6 +13,12 @@ export 'test_input.dart';
 ///
 /// Tag list:
 /// - [input]: the input of the test case
+/// - [n]: if the input is a list,
+///   it will be replaced by the n-th element of the list
+///   for example, if the input is ['a', 'b', 'c'],
+///   [1] will be replaced by 'a'
+///   [2] will be replaced by 'b'
+///   [3] will be replaced by 'c'
 /// - [expect]: the expected output of the test case
 ///
 /// Example:
@@ -40,7 +46,12 @@ void testOnCases(Function function,
     for (final testCase in testCases) {
       test(caseDescription
           .replaceAll('[input]', testCase.input.toString())
-          .replaceAll('[expect]', testCase.expect.toString()), () {
+          .replaceAll('[expect]', testCase.expect.toString()
+          .replaceAllMapped(RegExp('r[(d+)]'), (match) {
+            final index = int.parse(match.group(1)!);
+            return testCase.inputList[index].toString();
+          },)
+      ), () {
         expect(Function.apply(function, testCase.inputList), testCase.expect);
       });
     }
