@@ -20,6 +20,8 @@ export 'test_input.dart';
 ///   [2] will be replaced by 'b'
 ///   [3] will be replaced by 'c'
 /// - [expect]: the expected output of the test case
+/// - [expect?value1:value2]: if the expected output is true,
+///   it will be replaced by value1, otherwise by value2
 ///
 /// Example:
 /// ```dart
