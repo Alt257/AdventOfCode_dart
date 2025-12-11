@@ -1,15 +1,8 @@
 
-
 import 'package:advent_of_code__dart/CORE/test/puzzle_tests.dart';
 
-final class TestCase<Input, Expect> {
-
-  final Input input;
-  final Expect expect;
-
-  TestCase(this.input, {required this.expect});
-
-}
+export 'test_case.dart';
+export 'test_input.dart';
 
 /// Test a function on a list of test cases.
 /// [function] is the function to test.

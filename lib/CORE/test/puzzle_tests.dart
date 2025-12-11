@@ -1,11 +1,11 @@
-import 'package:advent_of_code__dart/CORE/entity/hint.dart';
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
+import 'package:advent_of_code__dart/CORE/test/hint.dart';
 import 'package:test/test.dart';
 
-export 'package:advent_of_code__dart/CORE/entity/hint.dart';
 export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
-export 'package:advent_of_code__dart/CORE/entity/test_case.dart';
+export 'package:advent_of_code__dart/CORE/test/hint.dart';
+export 'package:advent_of_code__dart/CORE/test/multi_cases/helper.dart';
 export 'package:test/test.dart';
 
 Future<void> runPuzzleTests(
