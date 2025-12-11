@@ -25,7 +25,7 @@ Future<void> main() async {
       tests: (puzzle) {
 
 
-        testOnCases(parseDirection, '[input] - direction must be [expect]', [
+        testOnCases(parseDirection, [
           TestCase('L68', expect: Direction.left),
           TestCase('L642', expect: Direction.left),
           TestCase('R4', expect: Direction.right),
@@ -33,12 +33,12 @@ Future<void> main() async {
         ]);
 
 
-        testOnCases(parseDistance, '[input] - distance must be [expect]', [
+        testOnCases(parseDistance, [
           TestCase('L5', expect: 5),
           TestCase('L68', expect: 68),
           TestCase('R4', expect: 4),
           TestCase('R688', expect: 688),
-        ]);
+        ], '[input] - distance must be [expect]');
 
 
         test('toListOfDialMove_test', () {
@@ -48,11 +48,11 @@ Future<void> main() async {
         });
 
 
-        testOnCases(makeMove, '[input] - must stop at [expect]', [
+        testOnCases(makeMove, [
           TestCase([0, DialMove(Direction.right, 5)], expect: 5),
           TestCase([0, DialMove(Direction.left, 1)], expect: 99),
           TestCase([53, DialMove(Direction.right, 600)], expect: 53),
-        ]);
+        ], '[input] - must stop at [expect]');
 
       },
 
