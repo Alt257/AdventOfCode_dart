@@ -45,13 +45,13 @@ void testOnCases(Function function,
   group('$functionName(...)', () {
     for (final testCase in testCases) {
       test(caseDescription
-          .replaceAll('[input]', testCase.input.toString())
-          .replaceAll('[expect]', testCase.expect.toString()
-          .replaceAllMapped(RegExp('r[(d+)]'), (match) {
-            final index = int.parse(match.group(1)!);
-            return testCase.inputList[index].toString();
-          },)
-      ), () {
+            .replaceAll('[input]', testCase.input.toString())
+            .replaceAll('[expect]', testCase.expect.toString())
+            .replaceAllMapped(RegExp('r[(d+)]'), (match) {
+              final index = int.parse(match.group(1)!);
+              return testCase.inputList[index].toString();
+            })
+        , () {
         expect(Function.apply(function, testCase.inputList), testCase.expect);
       });
     }
