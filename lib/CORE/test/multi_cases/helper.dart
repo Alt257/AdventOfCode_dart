@@ -47,9 +47,9 @@ void testOnCases(Function function,
       test(caseDescription
             .replaceAll('[input]', testCase.input.toString())
             .replaceAll('[expect]', testCase.expect.toString())
-            .replaceAllMapped(RegExp('r[(d+)]'), (match) {
-              final index = int.parse(match.group(1)!);
-              return testCase.inputList[index].toString();
+            .replaceAllMapped(RegExp(r'\[(\d+)\]'), (match) {
+                final index = int.parse(match.group(1)!) - 1;
+                return '[${testCase.inputList[index]}]';
             })
         , () {
         expect(Function.apply(function, testCase.inputList), testCase.expect);
