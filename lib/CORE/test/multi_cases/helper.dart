@@ -51,6 +51,10 @@ void testOnCases(Function function,
                 final index = int.parse(match.group(1)!) - 1;
                 return '[${testCase.inputList[index]}]';
             })
+            // Replace [expect?value1:value2] with value1 if expect is true, value2 otherwise
+            .replaceAllMapped(RegExp(r'\[expect\?(.*?):(.*?)\]'), (match) {
+                return testCase.expect ? '${match.group(1)}' : '${match.group(2)}';
+            })
         , () {
         expect(Function.apply(function, testCase.inputList), testCase.expect);
       });
