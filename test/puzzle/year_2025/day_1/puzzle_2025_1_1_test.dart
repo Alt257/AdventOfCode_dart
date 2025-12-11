@@ -25,21 +25,13 @@ Future<void> main() async {
 
       tests: (puzzle) {
 
-        group('parseDirection_test', () {
-          final testData = <TestCase>[
-            TestCase('L68', expect: Direction.left),
-            TestCase('L642', expect: Direction.left),
-            TestCase('R4', expect: Direction.right),
-            TestCase('R48', expect: Direction.right),
-          ];
 
-          for (final data in testData) {
-            test('${data.input}: direction must be [${data.expect}]', () {
-              final direction = parseDirection(data.input);
-              expect(direction, data.expect);
-            });
-          }
-        });
+        testOnCases(parseDirection, '[input] - direction must be [expect]', [
+          TestCase('L68', expect: Direction.left),
+          TestCase('L642', expect: Direction.left),
+          TestCase('R4', expect: Direction.right),
+          TestCase('R48', expect: Direction.right),
+        ]);
 
 
         group('parseDistance_test', () {
