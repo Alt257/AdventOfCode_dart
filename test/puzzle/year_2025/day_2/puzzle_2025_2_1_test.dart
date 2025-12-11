@@ -6,12 +6,12 @@ void main() {
   runPuzzleTests(Puzzle_2025_2_1(),
 
     tests: (puzzle) {
-      test('isSame()', () {
-        expect(isSame('a', 'a'), true);
-        expect(isSame('a', 'b'), false);
-        expect(isSame('10', '10'), true);
-      });
 
+      testOnCases(isSame, '[input] - must be [expect]', [
+        TestCase(['a', 'a'], expect: true),
+        TestCase(['a', 'b'], expect: false),
+        TestCase(['10', '10'], expect: true),
+      ]);
 
       testOnCases(isValidID, '[input] - must be [expect]', [
         TestCase('11', expect: false),
