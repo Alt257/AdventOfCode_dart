@@ -1,4 +1,4 @@
-import 'package:advent_of_code__dart/CORE/test/run_tests.dart';
+import 'package:advent_of_code__dart/CORE/test/puzzle_tests.dart';
 import 'package:advent_of_code__dart/CORE/utils/parse.dart';
 
 void main() {
