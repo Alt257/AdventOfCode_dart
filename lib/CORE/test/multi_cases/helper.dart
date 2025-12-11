@@ -5,6 +5,7 @@ export 'test_case.dart';
 export 'test_input.dart';
 
 /// Test a function on a list of test cases.
+/// 
 /// [function] is the function to test.
 /// [testCases] is the list of test cases.
 /// [caseDescription] is the description of the test.
