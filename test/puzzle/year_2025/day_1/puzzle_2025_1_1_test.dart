@@ -34,21 +34,12 @@ Future<void> main() async {
         ]);
 
 
-        group('parseDistance_test', () {
-          final testData = <TestCase>[
-            TestCase('L5', expect: 5),
-            TestCase('L68', expect: 68),
-            TestCase('R4', expect: 4),
-            TestCase('R688', expect: 688),
-          ];
-
-          for (final data in testData) {
-            test('${data.input}: distance must be [${data.expect}]', () {
-              final distance = parseDistance(data.input);
-              expect(distance, data.expect);
-            });
-          }
-        });
+        testOnCases(parseDistance, '[input] - distance must be [expect]', [
+          TestCase('L5', expect: 5),
+          TestCase('L68', expect: 68),
+          TestCase('R4', expect: 4),
+          TestCase('R688', expect: 688),
+        ]);
 
 
         test('toListOfDialMove_test', () {
