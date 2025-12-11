@@ -13,7 +13,7 @@ void main() {
         TestCase(['10', '10'], expect: true),
       ], '[1] ant [2] must be equals: [expect]');
 
-      testOnCases(isValidID, [
+      testOnCases(isAValidID, [
         TestCase('11', expect: false),
         TestCase('99', expect: false),
         TestCase('1010', expect: false),

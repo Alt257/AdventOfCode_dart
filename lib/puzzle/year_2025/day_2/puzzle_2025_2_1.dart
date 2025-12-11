@@ -21,7 +21,7 @@ bool isSame(String a, String b) {
   return true;
 }
 
-bool isValidID(String id) {
+bool isAValidID(String id) {
   if (id.length % 2 != 0) return false;
   final partsLength = (id.length / 2).toInt();
 
