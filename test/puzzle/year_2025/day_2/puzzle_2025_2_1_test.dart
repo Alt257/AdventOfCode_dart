@@ -22,7 +22,7 @@ void main() {
         ];
         for (final testCase in testCases) {
           test(testCase.toString(), () {
-            expect(isValidID(testCase.input[0]), testCase.expect);
+            expect(isValidID(testCase.input), testCase.expect);
           });
         }
       });
