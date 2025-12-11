@@ -11,7 +11,7 @@ void main() {
         TestCase(['a', 'a'], expect: true),
         TestCase(['a', 'b'], expect: false),
         TestCase(['10', '10'], expect: true),
-      ], '[1] ant [2] must be equals: [expect]');
+      ], '[1] ant [2] must be [expect?:NOT] equals');
 
       testOnCases(isAValidID, [
         TestCase('11', expect: false),
