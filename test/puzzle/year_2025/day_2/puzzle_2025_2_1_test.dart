@@ -16,6 +16,7 @@ void main() {
       testOnCases(isAValidID, [
         TestCase('11', expect: false),
         TestCase('99', expect: false),
+        TestCase('101', expect: true),
         TestCase('1010', expect: false),
         TestCase('123123', expect: false),
         TestCase('123124', expect: true),
