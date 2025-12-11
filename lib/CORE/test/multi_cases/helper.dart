@@ -29,8 +29,8 @@ export 'test_input.dart';
 /// );
 ///
 
-void testOnCases(Function function, [
-    List<TestCase> testCases = const [],
+void testOnCases(Function function,
+    List<TestCase> testCases, [
     String caseDescription = '[input] - must be [expect]',
 ]) {
   // Extract name from "Closure: ... from Function 'parseDirection': ..."
