@@ -11,7 +11,7 @@ void main() {
         TestCase(['a', 'a'], expect: true),
         TestCase(['a', 'b'], expect: false),
         TestCase(['10', '10'], expect: true),
-      ], '[input] - must be [expect]');
+      ], '[1] ant [2] must be equals: [expect]');
 
       testOnCases(isValidID, [
         TestCase('11', expect: false),
@@ -19,7 +19,7 @@ void main() {
         TestCase('1010', expect: false),
         TestCase('123123', expect: false),
         TestCase('123124', expect: true),
-      ], '[input] - must be [expect]');
+      ]);
 
     }
   );
