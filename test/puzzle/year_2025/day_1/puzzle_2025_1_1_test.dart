@@ -48,21 +48,11 @@ Future<void> main() async {
         });
 
 
-        group('makeMove_test()', () {
-          final testData = <TestCase>[
-            TestCase(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
-            TestCase(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
-            TestCase(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
-          ];
-
-          for (final data in testData) {
-            test('${data.input}: must stop at [${data.expect}]', () {
-              final position = makeMove(
-                  data.input.initialPosition, data.input.move);
-              expect(position, data.expect);
-            });
-          }
-        });
+        testOnCases(makeMove, '[input] - must stop at [expect]', [
+          TestCase([0, DialMove(Direction.right, 5)], expect: 5),
+          TestCase([0, DialMove(Direction.left, 1)], expect: 99),
+          TestCase([53, DialMove(Direction.right, 600)], expect: 53),
+        ]);
 
       },
 

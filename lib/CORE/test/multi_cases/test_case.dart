@@ -4,10 +4,12 @@
 
 final class TestCase<Input, Expect> {
 
-  final Input input;
+  final List<dynamic> input;
   final Expect expect;
 
-  TestCase(this.input, {required this.expect});
+  TestCase(dynamic input, {required this.expect}): input = input is List
+      ? input
+      : [input];
 
 }
 

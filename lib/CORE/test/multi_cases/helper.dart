@@ -30,7 +30,7 @@ void testOnCases(Function function, String description, List<TestCase> testCases
     test(description
         .replaceAll('[input]', testCase.input.toString())
         .replaceAll('[expect]', testCase.expect.toString()), () {
-      expect(function(testCase.input), testCase.expect);
+      expect(Function.apply(function, testCase.input), testCase.expect);
     });
   }
 }
