@@ -12,20 +12,14 @@ void main() {
         expect(isSame('10', '10'), true);
       });
 
-      group('isValidID()', () {
-        final testCases = [
-          TestCase('11', expect: false),
-          TestCase('99', expect: false),
-          TestCase('1010', expect: false),
-          TestCase('123123', expect: false),
-          TestCase('123124', expect: true),
-        ];
-        for (final testCase in testCases) {
-          test(testCase.toString(), () {
-            expect(isValidID(testCase.input), testCase.expect);
-          });
-        }
-      });
+
+      testOnCases(isValidID, '[input] - must be [expect]', [
+        TestCase('11', expect: false),
+        TestCase('99', expect: false),
+        TestCase('1010', expect: false),
+        TestCase('123123', expect: false),
+        TestCase('123124', expect: true),
+      ]);
 
     }
   );
