@@ -65,7 +65,7 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
 
 void testRealInput(Puzzle puzzle) {
   test('Real  /!\\ NO ANSWER EXPECTED /!\\', () {
-    print('====================================== [ Real ] =======================================');
+    print('======================================= [ Real ] ========================================');
     final answer = puzzle.solve(puzzle.input, true);
     print('=========================================================================================');
     print('Puzzle answer should be [$answer]');
