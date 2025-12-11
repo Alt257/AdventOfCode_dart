@@ -1,6 +1,6 @@
 import 'package:advent_of_code__dart/CORE/data/data_provider/advent_of_code_website/advent_of_code_website.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
-import 'package:advent_of_code__dart/CORE/test/run_tests.dart';
+import 'package:advent_of_code__dart/CORE/test/puzzle_tests.dart';
 import 'package:advent_of_code__dart/puzzle/year_2025/day_1/puzzle_2025_1_1.dart';
 
 void main() {

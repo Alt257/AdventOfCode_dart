@@ -1,5 +1,4 @@
-import 'package:advent_of_code__dart/CORE/entity/test_input.dart';
-import 'package:advent_of_code__dart/CORE/test/run_tests.dart';
+import 'package:advent_of_code__dart/CORE/test/puzzle_tests.dart';
 import 'package:advent_of_code__dart/puzzle/year_2025/day_1/puzzle_2025_1_1.dart';
 
 /// ****************************************************************************
@@ -25,38 +24,21 @@ Future<void> main() async {
 
       tests: (puzzle) {
 
-        group('parseDirection_test', () {
-          final testData = <TestData>[
-            TestData('L68', expect: Direction.left),
-            TestData('L642', expect: Direction.left),
-            TestData('R4', expect: Direction.right),
-            TestData('R48', expect: Direction.right),
-          ];
 
-          for (final data in testData) {
-            test('${data.input}: direction must be [${data.expect}]', () {
-              final direction = parseDirection(data.input);
-              expect(direction, data.expect);
-            });
-          }
-        });
+        testOnCases(parseDirection, '[input] - direction must be [expect]', [
+          TestCase('L68', expect: Direction.left),
+          TestCase('L642', expect: Direction.left),
+          TestCase('R4', expect: Direction.right),
+          TestCase('R48', expect: Direction.right),
+        ]);
 
 
-        group('parseDistance_test', () {
-          final testData = <TestData>[
-            TestData('L5', expect: 5),
-            TestData('L68', expect: 68),
-            TestData('R4', expect: 4),
-            TestData('R688', expect: 688),
-          ];
-
-          for (final data in testData) {
-            test('${data.input}: distance must be [${data.expect}]', () {
-              final distance = parseDistance(data.input);
-              expect(distance, data.expect);
-            });
-          }
-        });
+        testOnCases(parseDistance, '[input] - distance must be [expect]', [
+          TestCase('L5', expect: 5),
+          TestCase('L68', expect: 68),
+          TestCase('R4', expect: 4),
+          TestCase('R688', expect: 688),
+        ]);
 
 
         test('toListOfDialMove_test', () {
@@ -66,21 +48,11 @@ Future<void> main() async {
         });
 
 
-        group('makeMove_test()', () {
-          final testData = <TestData>[
-            TestData(MaKeMoveTestInput(0, DialMove(Direction.right, 5)), expect: 5),
-            TestData(MaKeMoveTestInput(0, DialMove(Direction.left, 1)), expect: 99),
-            TestData(MaKeMoveTestInput(53, DialMove(Direction.right, 600)), expect: 53),
-          ];
-
-          for (final data in testData) {
-            test('${data.input}: must stop at [${data.expect}]', () {
-              final position = makeMove(
-                  data.input.initialPosition, data.input.move);
-              expect(position, data.expect);
-            });
-          }
-        });
+        testOnCases(makeMove, '[input] - must stop at [expect]', [
+          TestCase([0, DialMove(Direction.right, 5)], expect: 5),
+          TestCase([0, DialMove(Direction.left, 1)], expect: 99),
+          TestCase([53, DialMove(Direction.right, 600)], expect: 53),
+        ]);
 
       },
 
