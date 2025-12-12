@@ -1,6 +1,7 @@
 import 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
 import 'package:advent_of_code__dart/CORE/environment.dart';
 import 'package:advent_of_code__dart/CORE/test/hint.dart';
+import 'package:advent_of_code__dart/CORE/utils/print.dart';
 import 'package:test/test.dart';
 
 export 'package:advent_of_code__dart/CORE/entity/puzzle.dart';
@@ -51,9 +52,9 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
       : 'Custom  /!\\ NO ANSWER EXPECTED /!\\';
 
   test(description, () {
-    print('====================================== [ Custom ] =======================================');
+    printCenteredTitle('Custom');
     final answer = puzzle.solve(customInput, true);
-    print('=========================================================================================');
+    printFillLine('=');
     if (customAnswer != null) {
       expect(answer, customAnswer);
     } else {
@@ -65,9 +66,9 @@ void testCustomInput(Puzzle puzzle, String? customInput, dynamic customAnswer) {
 
 void testRealInput(Puzzle puzzle) {
   test('Real  /!\\ NO ANSWER EXPECTED /!\\', () {
-    print('======================================= [ Real ] ========================================');
+    printCenteredTitle('Real');
     final answer = puzzle.solve(puzzle.input, true);
-    print('=========================================================================================');
+    printFillLine('=');
     print('Puzzle answer should be [$answer]');
   });
 }
@@ -75,9 +76,9 @@ void testRealInput(Puzzle puzzle) {
 
 void testExampleInput(Puzzle puzzle) {
   test('Example', () {
-    print('====================================== [ Example ] ======================================');
+    printCenteredTitle('Example');
     expect(puzzle.solve(puzzle.exampleInput, true), puzzle.exampleAnswer);
-    print('=========================================================================================');
+    printFillLine('=');
     print('Example answer is [${puzzle.exampleAnswer}]');
   });
 }
